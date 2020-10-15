@@ -20,7 +20,12 @@ public class UserInputClient {
         Scanner sc = new Scanner(System.in);
         Socket server;
         int portNumber = 80;
-        server = new Socket(InetAddress.getLocalHost(), portNumber);
+        System.out.print("Direccion del servidor: ");
+        String dir = sc.nextLine();
+        if(dir.equals(""))
+            server = new Socket(InetAddress.getLocalHost(), portNumber);
+        else
+            server = new Socket(dir, portNumber);
         
         ObjectOutputStream oos = new ObjectOutputStream(server.getOutputStream());
         ObjectInputStream ois = new ObjectInputStream(server.getInputStream()); 

@@ -8,6 +8,7 @@ package server;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -22,7 +23,7 @@ public class EchoServer {
         Socket client;
         String str = "ECHO: ";
         serverSocket = new ServerSocket(port);
-        System.out.println("Esperando conexion...");
+        System.out.println("Esperando conexion en: "+ InetAddress.getLocalHost()+"...");
         client = serverSocket.accept();
         System.out.println("Conectado.");
         
