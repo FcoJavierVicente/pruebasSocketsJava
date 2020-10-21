@@ -5,7 +5,6 @@
  */
 package gui;
 
-import java.awt.event.WindowAdapter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -14,7 +13,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTree;
 
 /**
  *
@@ -114,6 +112,7 @@ public class IOWindow extends javax.swing.JFrame {
         }
         
         jTextField1.setText("");
+        jTextField1.requestFocus();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -122,7 +121,7 @@ public class IOWindow extends javax.swing.JFrame {
             oos.close();
             ois.close();
             server.close();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(IOWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowClosing
