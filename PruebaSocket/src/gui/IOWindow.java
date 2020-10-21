@@ -4,6 +4,8 @@
  * and open the template in the editor. 
  */
 //a ver a que rama se sube esto se crea rama nueva?
+//a ver a que rama se sube esto
+//cambio main
 package gui;
 
 import java.io.IOException;
