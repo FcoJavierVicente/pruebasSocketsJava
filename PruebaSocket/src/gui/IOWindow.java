@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor. 
  */
-//a ver a que rama se sube esto
+//a ver a que rama se sube esto se crea rama nueva?
 package gui;
 
 import java.io.IOException;
