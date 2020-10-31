@@ -15,22 +15,18 @@ import java.util.Scanner;
  *
  * @author bitde
  */
-public class UserInputClient {
+public class UserInputClient {  
     public static void main(String args[]) throws Exception{
+        ClientLogic client;
         Scanner sc = new Scanner(System.in);
-        Socket server;
-        int portNumber = 80;
         System.out.print("Direccion del servidor: ");
         String dir = sc.nextLine();
         //establecer comunicacion con el servidor
         if(dir.equals(""))
-            server = new Socket(InetAddress.getLocalHost(), portNumber);
+            client = new ClientLogic();
         else
-            server = new Socket(dir, portNumber);
-        //canal de salida de datos hacia servidor
-        ObjectOutputStream oos = new ObjectOutputStream(server.getOutputStream());
-        //canal de entrada de datos desde servidor
-        ObjectInputStream ois = new ObjectInputStream(server.getInputStream()); 
+            client = new ClientLogic(80,dir);
+        client.connect();
         
         String output = "";
         String str = "";
@@ -38,20 +34,15 @@ public class UserInputClient {
             System.out.println("INtroduce un mensaje: ");
             str = sc.nextLine();
             //manda mensaje
-            oos.writeObject(str);    
+            client.send(str);
             //recibe respuesta
-            output = (String) ois.readObject();
+            output = client.receive();
             System.out.println(output);
         }
         
-        //cierra canal de salida
-        oos.close();
-        //cierra canal de entrada
-        ois.close();
-        //cierra comunicacion
-        server.close();
-        
-        
+        client.disconect();
     }
+    
+    
     
 }
